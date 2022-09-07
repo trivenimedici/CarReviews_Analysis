@@ -1,3 +1,4 @@
+from ast import Raise
 import os
 from flask import Flask, request, render_template,Response
 from flask_cors import CORS,cross_origin
@@ -20,17 +21,19 @@ CORS(app)
 @app.route("/",methods=['GET','POST'])
 @cross_origin()
 def webscrapping_app_home():
-    file=open(logger.app_logger().createLoggerFile("Webscrapping_app_logs.txt"),"a+")
+    logger.app_logger().deleteExistingLogFiles()
+    filetoopen =logger.app_logger().createLoggerFile("Webscrapping_app_logs.txt")
     try:
-        logger.app_logger().log(file,"Web Scrapping app started")
+        logger.app_logger().log(filetoopen,"Web Scrapping app started")
         if request.method=="POST":
             searchString = request.form['content'].replace(" ","-")
             logger.app_logger().log(f'the search string inserted by the user is {searchString}')
         else:
             return render_template('index.html')
     except Exception as e:
+        file=open("Log_Files_Collection/ErrorLogs.txt","a+")
         logger.app_logger().log(file,"Error in the Web Scrapping app Home function %s:" % e)
-        return e
+        raise e
 
 
 port= int(os.getenv("PORT",5000))

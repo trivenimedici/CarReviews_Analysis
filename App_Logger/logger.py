@@ -1,5 +1,7 @@
 from datetime import datetime
+from genericpath import isdir
 import os
+
 
 class app_logger:
     def __init__(self) -> None:
@@ -9,25 +11,23 @@ class app_logger:
         self.now=datetime.now()
         self.current_date=self.now.date()
         self.current_time=self.now.strftime("%H:%M:%S")
-        fileObject.write(self.current_date+"_"+self.current_time+"\t\t"+logMessage+"\n")
+        fileObject.write(str(self.current_date)+"_"+str(self.current_time)+"\t\t"+logMessage+"\n")
 
     def createLoggerFile(self,fileName):
         try:
-            path=os.path.join("Log_Files_Collection/",fileName)
-            if not os.path.isdir(path):
-                os.makedirs(path)
-            return path
+            file_path="Log_Files_Collection/"+fileName
+            if not os.path.exists(file_path):
+                file= open(file_path,"a+")
+            return file
         except OSError:
-            file=open("Log_Files_Collection/GeneralLog.txt","a+")
+            file=open("Log_Files_Collection/ErrorLogs.txt","a+")
             self.log(file,"Error while creating log file for "+fileName+"%s:" % OSError)
-            return OSError
+            raise OSError
 
-    def deleteExistingLogFileinDirectory(self,fileName):
+    def deleteExistingLogFiles(self):
         try:
-            path =os.path.join("Log_Files_Collection/",fileName)
-            if os.path.isdir(path):
-                os.removedirs(fileName)
+            existing_files=[f for f in os.listdir("Log_Files_Collection")]
+            for f in existing_files:
+                os.remove("Log_Files_Collection/"+f)
         except OSError:
-            file=open("Log_Files_Collection/GeneralLog.txt","a+")
-            self.log(file,"Error while deleting the file"+fileName+"%s:" % OSError)
-            return OSError
+            raise OSError
