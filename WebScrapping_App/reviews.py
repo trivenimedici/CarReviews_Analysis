@@ -1,5 +1,3 @@
-from distutils.log import error
-from socket import CAN_BCM_RX_NO_AUTOTIMER
 from urllib.request import Request, urlopen
 from App_Logger import logger
 from flask import Flask, Request
@@ -8,13 +6,15 @@ import requests
 from bs4 import BeautifulSoup as bs
 import numpy as np
 import pandas as pd
-from webapp_dbconnection import DBconnectionToApp as dbconnection
+from WebScrapping_App import webapp_dbconnection as dbconnection
 import os
 class GetReviews:
+    def __init__(self) -> None:
+         pass
     global log_file,error_file
     log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","a+")
-    error_file =open("Log_Files_Collection/ErrorLogs.txt","a+") 
-    def navigatetoApp(searchString):
+    error_file =open("ErrorLogs.txt","a+") 
+    def navigatetoApp(self,searchString):
         try:
             app_url="https://www.cardekho.com/user-reviews/"+searchString
             req=Request(app_url,headers={'User-Agent':'Mozilla/5.0'})
@@ -36,7 +36,7 @@ class GetReviews:
 
 
         
-    def get_reviews_from_ui():
+    def get_reviews_from_ui(self):
         try:
             reviewpage_html=bs(reviewpage)
             product_name =(reviewpage_html.text).split("Reviews - ")[0]
@@ -78,7 +78,7 @@ class GetReviews:
             raise e
     
 
-    def saveDataFrameDatatoFile(file_name,dataframe):
+    def saveDataFrameDatatoFile(self,file_name,dataframe):
         try:
             dataframe.to_csv(file_name)
             logger.app_logger().log(log_file,'Converted to the csv')
@@ -86,19 +86,18 @@ class GetReviews:
             logger.app_logger().log(error_file,"Unable to save date to the csv file %s:" % e)
             raise Exception(f"(saveDataframetofile)  - Unable to save data to the file.\n" + str(e))
 
-    def getReviewsToDisplay( searchstring, username, password):
+    def getReviewsToDisplay( self,searchstring, username, password):
         try:
-            mongoClient = dbconnection.MongoDBManagement(username, password)
-            db_search = mongoClient.findfirstRecord(db_name = "CarDekhoWebScrapping",collection_name=productname,
-                                                                query="{'product_name': productname}")
+            mongoClient = dbconnection.DBconnectionToApp(username, password)
+            db_search = mongoClient.findfirstRecord(db_name = "CarDekhoWebScrapping",collection_name=productname,query="{'product_name': productname}")
             logger.app_logger().log(log_file,'database search string is '+db_search)
             if db_search is not None:
                 logger.app_logger().log(log_file,"Yes Present "+str(len(db_search)))
             else:
                 logger.app_logger().log(log_file,"Not Present in DB getting reviews data from web application")
-                dataframe = get_reviews_from_ui()
-                result = saveDataFrameDatatoFile("static/scrapper_data.csv",dataframe)
-                mongoClient.insertRecordFromCSVFile(db_name="CarDekhoWebScrapping",collection_name=searchstring,csv_file="static/scrapper_data.csv",header=list(dataframe.columns))
+                dataframe = self.get_reviews_from_ui()
+                result = self.saveDataFrameDatatoFile("DataSet_Files_Collection/scrapper_data_"+searchstring+".csv",dataframe)
+                mongoClient.insertRecordFromCSVFile(db_name="CarDekhoWebScrapping",collection_name=searchstring,csv_file="DataSet_Files_Collection/scrapper_data_"+searchstring+".csv",header=list(dataframe.columns))
             return searchstring
         except Exception as e:
             logger.app_logger().log(error_file,"Something went wrong on yeilding data %s:" % e)
