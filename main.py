@@ -20,24 +20,27 @@ CORS(app)
 
 @app.route("/",methods=['GET','POST'])
 @cross_origin()
-def webscrapping_app_home():
-    logger.app_logger().deleteExistingLogFiles()
-    filetoopen =logger.app_logger().createLoggerFile("Webscrapping_app_logs.txt")
+def webscrapping_app_home(): 
     try:
+        filetoopen = open("Log_Files_Collection/Webscrapping_app_logs.txt","w",encoding='utf-8')
         logger.app_logger().log(filetoopen,"Web Scrapping app started")
         if request.method=="POST":
-            searchString = request.form['content'].replace(" ","-")
-            global car_name
-            car_name =searchString
-            searchresult = reviews.GetReviews().navigatetoApp(searchString)
-            logger.app_logger().log(filetoopen,f'the search string inserted by the user is {searchString}')
-            if(searchresult == "Unable to find details for searched product"):
+            searchString = request.form['content']
+            if " " not in searchString:
+                searchresult = "Unable to find the searched car"
+            else:    
+                searchString =searchString.replace(" ","/",1).replace(" ","-",2).lower()
+                global car_name
+                car_name =searchString.replace("/","_")
+                logger.app_logger().log(filetoopen,f'the search string inserted by the user is {searchString}')
+                searchresult = reviews.GetReviews().navigatetoApp(searchString)
+            if(searchresult == "Unable to find the searched car"):
                 return render_template('tryagain.html')
             else:
                 mongoClient = webapp_dbconnection.DBconnectionToApp(username='mongotest', password='mongo123')
-                if mongoClient.isCollectionPresent(collection_name=searchString, db_name="CarDekhoWebScrapping"):
+                if mongoClient.isCollectionPresent(collection_name=car_name, db_name="CarDekhoWebScrapping"):
                     logger.app_logger().log(filetoopen,'Mongo collection is present')
-                    response = mongoClient.findAllRecords(db_name="CarDekhoWebScrapping", collection_name=searchString)
+                    response = mongoClient.findAllRecords(db_name="CarDekhoWebScrapping", collection_name=car_name)
                     review= [i for i in response]
                     logger.app_logger().log(filetoopen,'review dta ais '+str(review))
                     result = [review[i] for i in range(0, len(review))]
@@ -47,13 +50,13 @@ def webscrapping_app_home():
                 else:
                     logger.app_logger().log(filetoopen,'collection not found so getting details')
                     global collection_name
-                    collection_name = reviews.GetReviews().getReviewsToDisplay(searchString,'mongotest','mongo123')
+                    collection_name = reviews.GetReviews().getReviewsToDisplay(car_name,'mongotest','mongo123')
                     logger.app_logger().log(filetoopen,'the collection name is '+str(collection_name))
                     return redirect(url_for('feedback'))
         else:
             return render_template('index.html')
     except Exception as e:
-        file=open("ErrorLogs.txt","a+")
+        file=open("ErrorLogs.txt","a+",encoding='utf-8')
         logger.app_logger().log(file,"Error in the Web Scrapping app Home function %s:" % e)
         raise e
 
@@ -61,7 +64,7 @@ def webscrapping_app_home():
 @cross_origin()
 def feedback():
     global log_file,error_file
-    log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","a+")
+    log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","a+",encoding='utf-8')
     error_file =open("ErrorLogs.txt","a+") 
     try:
         global collection_name
@@ -80,7 +83,7 @@ def feedback():
             logger.app_logger().log(log_file,'in the else loop and collection name is None')
             return render_template('tryagain.html')
     except Exception as e:
-        file=open("ErrorLogs.txt","a+")
+        file=open("ErrorLogs.txt","a+",encoding='utf-8')
         logger.app_logger().log(file,"Something went wrong on retrieving feedback %s:" % e)
         raise Exception("(feedback) - Something went wrong on retrieving feedback.\n" + str(e))
            

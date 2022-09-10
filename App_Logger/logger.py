@@ -4,7 +4,7 @@ import os
 
 
 class app_logger:
-    def __init__(self) -> None:
+    def __init__(self):
         pass
 
     def log(self,fileObject,logMessage):
@@ -15,24 +15,24 @@ class app_logger:
 
     def createLoggerFile(self,fileName):
         try:
+            file_open=None
             file_path="Log_Files_Collection/"+fileName
             if not os.path.exists(file_path):
-                file= open(file_path,"a+")
-            return file
+                file_open= open(file_path,"a+",encoding='utf-8')
+            return file_open
         except OSError:
-            file=open("ErrorLogs.txt","a+")
+            file=open("ErrorLogs.txt","a+",encoding='utf-8')
             self.log(file,"Error while creating log file for "+fileName+"%s:" % OSError)
             raise OSError
 
-    def deleteExistingLogFiles(self):
+    def deleteExistingLogFiles(self,dir_path):
         try:
-            existing_files="Log_Files_Collection"
-            for f in os.listdir(existing_files):
-                file =os.path.join(existing_files,f)
+            for f in os.listdir(dir_path):
+                file =os.path.join(dir_path,f)
                 if os.path.isfile(file):
                     print('Deleting file:', file)
                     os.remove(file)
         except OSError:
-            file=open("ErrorLogs.txt","a+")
+            file=open("ErrorLogs.txt","a+",encoding='utf-8')
             self.log(file,"Error while deleteing log file for %s:" % OSError)
             raise OSError

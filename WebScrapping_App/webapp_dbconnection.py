@@ -6,13 +6,13 @@ import json
 import pandas as pd
 class DBconnectionToApp:
     global log_file,error_file
-    log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","a+") 
+    log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","a+",encoding='utf-8') 
     error_file =open("ErrorLogs.txt","a+") 
     def __init__(self,username,password):
         try:
             self.username=username
             self.password=password
-            self.url="mongodb+srv://{}:{}@cluster0.nlf9qxq.mongodb.net/CarDekhoWebScrapping?retryWrites=true&w=majority".format(self.username, self.password)
+            self.url="mongodb+srv://{}:{}@cluster0.rhagu.mongodb.net/CarDekhoWebScrapping?retryWrites=true&w=majority".format(self.username, self.password)
         except Exception as e:
             logger.app_logger().log(error_file,"Something went wrong while initation process %s:" % e)
             raise Exception(f"(__init__): Something went wrong on initiation process\n" + str(e))
@@ -143,7 +143,7 @@ class DBconnectionToApp:
     def insertRecordFromCSVFile(self,db_name,collection_name,csv_file,header):
         try:
             collection = self.getCollection(collection_name=collection_name, db_name=db_name)
-            csvfile = open(csv_file, 'r')
+            csvfile = open(csv_file, 'r',encoding='utf-8')
             reader = csv.DictReader( csvfile )
             for each in reader:
                 row={}

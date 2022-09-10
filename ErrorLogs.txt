@@ -6,3 +6,61 @@
 2022-09-09_17:13:57		Error while deleteing log file for <class 'OSError'>:
 2022-09-09_17:14:21		Error while deleteing log file for <class 'OSError'>:
 2022-09-09_17:15:34		Error while deleteing log file for <class 'OSError'>:
+2022-09-09_21:04:25		Error while deleteing log file for <class 'OSError'>:
+2022-09-09_21:08:12		Error while deleteing log file for <class 'OSError'>:
+2022-09-09_21:12:41		Error in the Web Scrapping app Home function 'NoneType' object has no attribute 'write':
+2022-09-09_21:15:15		Error in the Web Scrapping app Home function 'NoneType' object has no attribute 'write':
+2022-09-10_09:27:55		Failed on checking if the database is present or not ac-2o4tp1n-shard-00-00.nlf9qxq.mongodb.net:27017: connection closed,ac-2o4tp1n-shard-00-01.nlf9qxq.mongodb.net:27017: connection closed,ac-2o4tp1n-shard-00-02.nlf9qxq.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 631c0b2485a040e7f3d064a8, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-2o4tp1n-shard-00-00.nlf9qxq.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-2o4tp1n-shard-00-00.nlf9qxq.mongodb.net:27017: connection closed')>, <ServerDescription ('ac-2o4tp1n-shard-00-01.nlf9qxq.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-2o4tp1n-shard-00-01.nlf9qxq.mongodb.net:27017: connection closed')>, <ServerDescription ('ac-2o4tp1n-shard-00-02.nlf9qxq.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-2o4tp1n-shard-00-02.nlf9qxq.mongodb.net:27017: connection closed')>]>:
+2022-09-10_09:27:55		Failed on check  database collection (isDatabasePresent): Failed on checking if the database is present or not 
+ac-2o4tp1n-shard-00-00.nlf9qxq.mongodb.net:27017: connection closed,ac-2o4tp1n-shard-00-01.nlf9qxq.mongodb.net:27017: connection closed,ac-2o4tp1n-shard-00-02.nlf9qxq.mongodb.net:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 631c0b2485a040e7f3d064a8, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-2o4tp1n-shard-00-00.nlf9qxq.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-2o4tp1n-shard-00-00.nlf9qxq.mongodb.net:27017: connection closed')>, <ServerDescription ('ac-2o4tp1n-shard-00-01.nlf9qxq.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-2o4tp1n-shard-00-01.nlf9qxq.mongodb.net:27017: connection closed')>, <ServerDescription ('ac-2o4tp1n-shard-00-02.nlf9qxq.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('ac-2o4tp1n-shard-00-02.nlf9qxq.mongodb.net:27017: connection closed')>]>:
+2022-09-10_18:59:13		Unable to save date to the csv file Cannot save file into a non-existent directory: 'DataSet_Files_Collection':
+2022-09-10_19:06:46		Something went wrong on yeilding data can only concatenate str (not "NoneType") to str:
+2022-09-10_19:20:20		Error in the Web Scrapping app Home function (getReviewsToDisplay) - Something went wrong on yielding data.
+name 'productname' is not defined:
+2022-09-10_19:20:20		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_19:20:26		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_19:28:12		Error in the Web Scrapping app Home function (getReviewsToDisplay) - Something went wrong on yielding data.
+name 'productname' is not defined:
+2022-09-10_19:28:12		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_19:30:48		Error in the Web Scrapping app Home function (getReviewsToDisplay) - Something went wrong on yielding data.
+name 'productname' is not defined:
+2022-09-10_19:30:48		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_19:32:25		Error in the Web Scrapping app Home function (getReviewsToDisplay) - Something went wrong on yielding data.
+name 'productname' is not defined:
+2022-09-10_19:32:25		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_19:53:58		Error in the Web Scrapping app Home function HTTP Error 404: Not Found:
+2022-09-10_19:53:58		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_19:54:15		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_19:54:48		Error in the Web Scrapping app Home function HTTP Error 404: Not Found:
+2022-09-10_19:54:48		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_19:57:40		Error in the Web Scrapping app Home function HTTP Error 404: Not Found:
+2022-09-10_19:57:40		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_20:01:14		Error in the Web Scrapping app Home function HTTP Error 404: Not Found:
+2022-09-10_20:01:14		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_20:02:09		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_20:03:17		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_20:04:46		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_20:09:35		Something went wrong on yeilding data can only concatenate str (not "NoneType") to str:
+2022-09-10_20:12:26		Something went wrong on yeilding data can only concatenate str (not "NoneType") to str:
+2022-09-10_20:12:50		Something went wrong on yeilding data can only concatenate str (not "NoneType") to str:
+2022-09-10_20:20:03		Something went wrong on yeilding data can only concatenate str (not "NoneType") to str:
+2022-09-10_20:22:53		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_20:23:38		Something went wrong on yeilding data name 'productname' is not defined:
+2022-09-10_21:13:13		Error while deleteing log file for <class 'OSError'>:
+2022-09-10_21:13:13		Error in the Web Scrapping app Home function :
+2022-09-10_21:19:29		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_21:34:13		Error in the Web Scrapping app Home function HTTP Error 404: Not Found:
+2022-09-10_21:34:13		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_21:40:33		Something went wrong while opening app url HTTP Error 404: Not Found:
+2022-09-10_21:58:38		Error in the Web Scrapping app Home function (getReviewsToDisplay) - Something went wrong on yielding data.
+'charmap' codec can't encode characters in position 5232-5233: character maps to <undefined>:
+2022-09-10_21:48:20		Something went wrong while geting review data 'charmap' codec can't encode character '\U0001f44d' in position 5911: character maps to <undefined>:
+2022-09-10_21:48:20		Something went wrong on yeilding data 'charmap' codec can't encode character '\U0001f44d' in position 5911: character maps to <undefined>:
+2022-09-10_21:58:38		Something went wrong while geting review data 'charmap' codec can't encode characters in position 5232-5233: character maps to <undefined>:
+2022-09-10_21:58:38		Something went wrong on yeilding data 'charmap' codec can't encode characters in position 5232-5233: character maps to <undefined>:
+2022-09-10_22:00:58		Error in the Web Scrapping app Home function (getReviewsToDisplay) - Something went wrong on yielding data.
+(insertRecord): Something went wrong on inserting record from csv
+'charmap' codec can't decode byte 0x8d in position 6192: character maps to <undefined>:
+2022-09-10_22:00:58		Something went wrong while inserting record from csv file 'charmap' codec can't decode byte 0x8d in position 6192: character maps to <undefined>:
+2022-09-10_22:00:58		Something went wrong on yeilding data (insertRecord): Something went wrong on inserting record from csv
+'charmap' codec can't decode byte 0x8d in position 6192: character maps to <undefined>:
