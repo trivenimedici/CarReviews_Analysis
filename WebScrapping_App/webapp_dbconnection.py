@@ -6,7 +6,7 @@ import json
 import pandas as pd
 class DBconnectionToApp:
     global log_file,error_file
-    log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","a+",encoding='utf-8') 
+    log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","w",encoding='utf-8') 
     error_file =open("ErrorLogs.txt","a+") 
     def __init__(self,username,password):
         try:

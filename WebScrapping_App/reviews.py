@@ -11,7 +11,7 @@ class GetReviews:
     def __init__(self) -> None:
          pass
     global log_file,error_file,productname
-    log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","a+",encoding='utf-8')
+    log_file=open("Log_Files_Collection/Webscrapping_app_logs.txt","w",encoding='utf-8')
     error_file =open("ErrorLogs.txt","a+",encoding='utf-8') 
     def navigatetoApp(self,searchString):
         try:
