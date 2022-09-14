@@ -1,0 +1,16 @@
+{
+    "samplefilename": "scrapper_data_citroen_c3.csv",
+    "numberofcolumns": 10,
+    "columnnames": {
+        "": "varchar",
+        "_id": "varchar",
+        "Car_Name": "varchar",
+        "OverAll_Rating": "varchar",
+        "Price": "varchar",
+        "Rating_Title": "varchar",
+        "Reviews_Description": "varchar",
+        "Review_Author": "varchar",
+        "User_Rating": "float",
+        "Review_Date": "datetimes"
+    }
+}
