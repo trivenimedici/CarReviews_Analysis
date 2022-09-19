@@ -1,8 +1,8 @@
 {
-    "samplefilename": "scrapper_data_citroen_c3.csv",
-    "numberofcolumns": 10,
-    "columnnames": {
-        "": "varchar",
+    "trainingdataFilePattern": "scrapper_data_hyundai_i20-n-line.csv",
+    "numberOfColumns": 10,
+    "columnNames": {
+        "": "integer",
         "_id": "varchar",
         "Car_Name": "varchar",
         "OverAll_Rating": "varchar",
@@ -11,6 +11,6 @@
         "Reviews_Description": "varchar",
         "Review_Author": "varchar",
         "User_Rating": "float",
-        "Review_Date": "datetimes"
+        "Review_Date": "datetime"
     }
 }
